@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FIRELY</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" >
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js"></script>
+<link rel="stylesheet" href="/static/styles/app.css">
+
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+
+<!--  renders map inside of the div #map -->
+
+<div id="map"></div>
+<form id="btn-gb" action="/button" method="get" > <!-- or method="post" -->
+        <input type="submit" value="home" >
+</form>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXlzb2siLCJhIjoiY2tzZ25jZ3JnMWx3MjJ0cm80aTZhaG5oaSJ9.2zzHPMv_COMuSjPn8wmypw';
+
+const map = new mapboxgl.Map({
+	container: 'map', // container ID
+	style: 'mapbox://styles/mapbox/streets-v11', // style URL
+	center: [{{fire_lng}}, {{fire_lat}}], // starting position [lng, lat]
+	zoom: 9 // starting zoom
+});
+
+/* when marker is clicked, a msg with fire's distance from the user pops up */
+
+var popup = new mapboxgl.Popup()
+.setHTML(`<h3>Warning!</h3><p>The closest fire is {{distance}} km away from the entered location! </p>`);
+
+var marker = new mapboxgl.Marker({
+		color: "#FF0000"})
+      .setLngLat([{{fire_lng}}, {{fire_lat}}]) 
+      .setPopup(popup) 
+      .addTo(map); 
+
+</script>
+ 
+</body>
+</html>
+

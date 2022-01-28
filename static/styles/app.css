@@ -1,0 +1,47 @@
+
+body {
+  height: 100%;
+  background-image: url('/static/images/fire-130.jpg');
+}
+
+.jumbotron {
+  background: rgba(204, 204, 204, 0.5);
+  margin-top: 100px
+}
+
+h1 {
+  font-family: 'Major Mono Display', monospace;
+  color: lightslategray;
+  text-align: left;
+  margin: 20;
+}
+#submit-btn {
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+#btn-gb {
+  position: fixed;
+  padding: 40px;
+  font-size: 32px;
+  border: none;
+  text-shadow: lightsteelblue ;
+  margin: 2px 4px;
+}
+
+#btn-err-gb {
+  position: relative;
+  padding: 40px;
+  font-size: 32px;
+  border: none;
+  text-shadow: lightsteelblue ;
+  margin: 2px 4px;
+}
+
+h2 {
+  font-family: 'Major Mono Display', monospace;
+  color: lightslategray;
+  text-align: center;
+  margin: 100;
+  
+}

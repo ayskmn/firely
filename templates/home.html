@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} FIRELY {% endblock %}
+
+{% block content %}
+
+	<div class="col-lg-6 col-xs-12 col-md-6 offset-md-3"> 
+		<div class="bg-image p-5 text-left shadow-1-strong rounded mb-5 text-gray">
+			<div class="jumbotron">
+				<form action="/map" method="POST">
+					<div class="form-group mx-sm-3 mb-2">
+						<h1 id="title">FIRELY</h1>
+						{% with messages = get_flashed_messages() %}
+							{% if messages %}
+						   		{% for message in messages %}
+						      			<p>{{ message }}</p>
+						   		{% endfor %}
+							{% endif %}
+					       	{% endwith %}	
+						{{ form.hidden_tag() }}
+						{% for field in form if field.widget.input_type != 'hidden'%}
+						<p>
+						{{field.label}}
+						<i class="fa fa-map-pin"></i> {{field}}
+					
+						{% for err in field.errors %}
+							{{err}}
+						{% endfor %}
+						</p>
+						{% endfor %}
+						<small id="addresslHelp" class="form-text text-muted">Submit your address to find the closest fire to you.</small>
+				  		<button type="submit" id="submit-btn" class="sbmt btn btn-primary">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
